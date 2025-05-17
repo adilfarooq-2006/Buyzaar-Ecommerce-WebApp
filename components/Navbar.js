@@ -1,22 +1,26 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useCart } from '@/context/CartContext'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import {
-    SignInButton,
-    SignUpButton,
-    SignedIn,
-    SignedOut,
-    UserButton,
-}
-    from '@clerk/nextjs'
+import { SignInButton, SignUpButton, SignedIn, SignedOut, UserButton, } from '@clerk/nextjs'
 
 const Navbar = () => {
+    const [query, setquery] = useState('')
     const { cart } = useCart();
+    const router = useRouter();
     // Calculate total quantity of items in cart
     const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if(query.trim()){
+            router.push(`/search?q=${encodeURIComponent(query)}`)
+        }
+    }
+    
 
     return (
         <nav className='flex items-center justify-between p-4 px-20 bg-white'>
@@ -26,12 +30,19 @@ const Navbar = () => {
                 </div>
             </Link>
             <div className="searchbar flex items-center justify-center relative">
-                <input className='w-2xl border-2 focus:ring-1 focus:ring-blue-500 outline-none relative border-blue-500 p-2 rounded-md' type="text" placeholder='Search for products, brands and more' />
-                <span className="flex gap-2 items-center justify-center catogary absolute right-22 px-1 border-l">
-                    All catogaries
-                    <Image src="/downarrow.svg" alt="arrow-down" width={10} height={10} />
-                </span>
-                <button className='bg-blue-500 absolute right-0 px-4 text-white p-2 rounded-r-md'>Search</button>
+                <form onSubmit={handleSearch}>
+                <input
+                    className='w-2xl border-2 focus:ring-1 focus:ring-blue-500 outline-none relative border-blue-500 p-2 rounded-md'
+                    type="text"
+                    value={query}
+                    onChange={(e) => setquery(e.target.value)}
+                    placeholder='Search for products, brands and more' />
+                <button
+                    type='submit'
+                    className='bg-blue-500 absolute right-0 px-4 text-white p-2 rounded-r-md'>
+                    Search
+                </button>
+                </form>
             </div>
             <div className="icons">
                 <ul className='flex items-center justify-center gap-3'>
@@ -47,10 +58,10 @@ const Navbar = () => {
                     </div>
 
                     <Link href={"/my-orders"} >
-                    <li className='flex flex-col items-center justify-center text-[#8b96a5]'>
-                        <Image src="/order.svg" alt="order" width={30} height={30} />
-                        Order
-                    </li>
+                        <li className='flex flex-col items-center justify-center text-[#8b96a5]'>
+                            <Image src="/order.svg" alt="order" width={30} height={30} />
+                            Order
+                        </li>
                     </Link>
                     <Link href={"/mycart"} >
                         <li className='flex flex-col items-center justify-center text-[#8b96a5]'>

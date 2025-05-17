@@ -8,27 +8,32 @@ export async function GET() {
     try {
         const { userId, sessionClaims } = await auth();
         
-        // if (!userId) {
-        //     return NextResponse.json({
-        //         success: false,
-        //         error: "Authentication required"
-        //     }, { status: 401 });
-        // }
+        if (!userId) {
+            return NextResponse.json({
+                success: false,
+                error: "Authentication required"
+            }, { status: 401 });
+        }
 
-        console.log("Session claims:", sessionClaims); // Debug log
-        console.log(sessionClaims.email)
+        console.log("User ID:", userId);
+        console.log("Session claims:", sessionClaims);
         
-        if (!sessionClaims?.email) {
+        // Get the current user to access email
+        const user = await currentUser();
+        console.log("Current user:", user);
+        
+        if (!user?.emailAddresses?.[0]?.emailAddress) {
             return NextResponse.json({
                 success: false,
                 error: "User email not found"
             }, { status: 401 });
         }
 
-        const userEmail = sessionClaims.email;
+        const userEmail = user.emailAddresses[0].emailAddress;
+        
         //connect to DB
         await mongoose.connect(process.env.MONGODB_URI);
-        //finding the orders againest email
+        //finding the orders against email
         const orders = await Order.find({email: userEmail}).sort({createdAt: -1});
 
         return NextResponse.json({
@@ -41,7 +46,7 @@ export async function GET() {
         console.error("Got error while fetching: " , error)
         return NextResponse.json({
             success: false,
-            error: error.message || "An error occured while fetching"
+            error: error.message || "An error occurred while fetching"
         }, {status:500} )   
     }
 }
