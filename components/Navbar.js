@@ -46,11 +46,12 @@ const Navbar = () => {
                         </SignedIn>
                     </div>
 
-
+                    <Link href={"/my-orders"} >
                     <li className='flex flex-col items-center justify-center text-[#8b96a5]'>
                         <Image src="/order.svg" alt="order" width={30} height={30} />
                         Order
                     </li>
+                    </Link>
                     <Link href={"/mycart"} >
                         <li className='flex flex-col items-center justify-center text-[#8b96a5]'>
                             <div className="relative">

@@ -7,13 +7,13 @@ import Link from 'next/link';
 export default function Home() {
   // Filter out a few products for the deals section (secondsection)
   const dealProducts = [...products].slice(0, 4);
-  
+
   // Get home and outdoor products for thirdsection (using some products)
   const homeProducts = [...products].slice(1, 9);
-  
+
   // Get tech products for fourthsec (using some products)
   const techProducts = [...products].slice(3, 11);
-  
+
   // Get recommended products
   const recommendedProducts = [...products]
     .sort(() => 0.5 - Math.random()) // shuffle the array
@@ -26,10 +26,10 @@ export default function Home() {
           <div className="one ">
             <ul className="flex gap-4">
               <Link href={"/products"}>
-              <span className="flex gap-2">
-                <Image src="/hamburger.svg" alt="arrow-down" width={20} height={20} />
-                All Catogaries
-              </span>
+                <span className="flex gap-2">
+                  <Image src="/hamburger.svg" alt="arrow-down" width={20} height={20} />
+                  All Catogaries
+                </span>
               </Link>
               <Link href={"/products"}><li>Hot offers</li></Link>
               <Link href={"/products"}><li>Gift box</li></Link>
@@ -40,12 +40,18 @@ export default function Home() {
             </ul>
 
           </div>
-          <div className="two flex gap-4">
+          <div className="two flex gap-4 items-center">
+
             <span className="flex gap-2">English, USD
               <Image src="/downarrow.svg" alt="arrow-down" width={10} height={10} /></span>
             <span>
               Ship to
             </span>
+            <Link href="/dashboard">
+              <span className="hover:bg-blue-500 bg-blue-100 hover:font-medium hover:text-white transition-all hover:cursor-pointer p-2 rounded-md px-3">
+                Admin Console
+              </span>
+            </Link>
           </div>
         </div>
 
@@ -92,7 +98,7 @@ export default function Home() {
               <Timer />
             </div>
           </div>
-          
+
           {dealProducts.map((product, index) => (
             <Link key={product.id} href={`/product/${product.id}`} className="flex-1 border-l border-neutral-200">
               <div className="flex hover:bg-gray-100 transition-all flex-col items-center p-2 w-full">

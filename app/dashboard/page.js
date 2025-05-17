@@ -8,8 +8,23 @@ import { useRouter } from 'next/navigation'
 const page = () => {
     const { user, isLoaded } = useUser();
     const [orders, setorders] = useState([])
+    const [completed, setcompleted] = useState(() => {
+        if (typeof window !== "undefined") {
+            const stored = localStorage.getItem("completedOrders");
+            return stored ? JSON.parse(stored) : {};
+        }
+        return {};
+    });
     const [loading, setloading] = useState(false)
     const router = useRouter();
+
+    const toggleCompleted = (orderID) => {
+        setcompleted(prev => {
+            const updated = { ...prev, [orderID]: !prev[orderID] };
+            localStorage.setItem("completedOrders", JSON.stringify(updated));
+            return updated;
+        });
+    }
 
     const fetchOrders = async () => {
         try {
@@ -32,7 +47,7 @@ const page = () => {
     useEffect(() => {
         // Only redirect if user is not admin
         if (isLoaded && user && user.primaryEmailAddress?.emailAddress !== "adilfarooqop@gmail.com") {
-            router.push("/"); // redirect non-admin users to home
+            router.push("/not-authorized"); // redirect non-admin users to home
         }
     }, [isLoaded, user, router]);
 
@@ -40,6 +55,7 @@ const page = () => {
     useEffect(() => {
         if (isLoaded && user && user.primaryEmailAddress?.emailAddress === "adilfarooqop@gmail.com") {
             fetchOrders();
+            router.push("/dashboard");
         }
     }, [isLoaded, user]);
 
@@ -63,6 +79,7 @@ const page = () => {
                                 <div className="flex justify-between mb-3">
                                     <div>
                                         <p className='text-lg font-semibold'>Order ID: {order._id}</p>
+                       
                                         <p className='text-black'>Customer: {order.fname} {order.lname}</p>
                                         <p className='text-black'>Email: {order.email}</p>
                                         <p className='text-black'>Address: {order.add}, {order.city}</p>
@@ -71,6 +88,13 @@ const page = () => {
                                     <div className="text-right">
                                         <p className='text-lg font-bold'>Total: ${order.totalPrice?.toFixed(2)}</p>
                                         <p className='text-sm'>Date: {new Date(order.createdAt).toLocaleDateString()}</p>
+                                        <button 
+                                        onClick={()=> toggleCompleted(order._id)} 
+                                        className={` transition-colors p-3 mt-2 px-5 rounded-lg text-white font-medium text-md hover:cursor-pointer
+                                        ${completed[order._id] ? 'bg-green-500' : 'bg-red-500'}
+                                        `}>
+                                            {completed[order._id]? 'Completed' : 'Not Completed'}
+                                        </button>
                                     </div>
                                 </div>
                                 

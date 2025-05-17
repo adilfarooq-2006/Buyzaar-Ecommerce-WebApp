@@ -13,7 +13,7 @@ const Page = () => {
   useEffect(() => {
     // If there's no cart items and no buyNow item, redirect to homepage
     if (cart.length === 0 && !buyNowItem) {
-      router.push('/');
+      <p>No order!</p>
     }
   }, [cart, buyNowItem, router]);
 
