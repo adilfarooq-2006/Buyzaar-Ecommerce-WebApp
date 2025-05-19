@@ -62,7 +62,7 @@ const page = () => {
     if (!isLoaded) return <p>Loading...</p>;
 
     return (
-        <div className='mt-3 mx-20 rounded-md flex flex-col gap-3 p-4 h-auto'>
+        <div className='mt-3 md:mx-20 rounded-md flex flex-col gap-3 p-4 h-auto'>
             <div className='bg-blue-500 text-white p-4 py-5 rounded-lg'>
                 <h1 className='font-bold text-3xl'>Welcome {user.fullName}!</h1>
                 <p className='font-medium text-lg'>This is your admin console</p>

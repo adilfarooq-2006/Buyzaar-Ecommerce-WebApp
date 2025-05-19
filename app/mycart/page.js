@@ -26,7 +26,7 @@ const Page = () => {
   const totalPrice = getTotalPrice();
   
   return (
-    <div className='mt-3 mx-20 bg-white rounded-md p-6 min-h-[60vh]'>
+    <div className='mt-3 md:mx-20 bg-white rounded-md p-6 min-h-[60vh]'>
       <h1 className='font-bold text-2xl mb-6'>My Cart</h1>
       
       {!isInitialized ? (

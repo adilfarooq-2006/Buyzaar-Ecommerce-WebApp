@@ -30,11 +30,11 @@ const page = ({ params }) => {
 
     return (
         <>
-            <div className=' mt-3 mx-20 rounded-md flex bg-white p-4 h-auto'>
-                <div className="image w-1/2 flex justify-center items-center">
+            <div className=' mt-3 md:mx-20 rounded-md flex md:flex-row flex-col bg-white p-4 h-auto'>
+                <div className="image md:w-1/2 flex justify-center items-center">
                     <Image src={product.image} alt={product.name} width={450} height={450} />
                 </div>
-                <div className="data w-1/2 flex flex-col gap-2">
+                <div className="data md:w-1/2 flex flex-col gap-2">
                     <h1 className='text-4xl font-bold'>{product.name}</h1>
                     <p className='text-xl text-neutral-500'>{product.description}</p>
                     <p className='text-sm text-neutral-500'>Items Sold: {product.sold}</p>
@@ -61,12 +61,12 @@ const page = ({ params }) => {
                     </div>
                 </div>
             </div>
-            <div className=' mt-3 mx-20 rounded-md flex gap-3  p-4 h-auto'>
-                <div className="description w-3/4 bg-white p-4 rounded-md">
+            <div className=' mt-3 md:mx-20 rounded-md flex md:flex-row flex-col gap-3  p-4 h-auto'>
+                <div className="description md:w-3/4 bg-white p-4 rounded-md">
                     <h1 className='text-2xl font-bold'>Description</h1>
                     <p className='text-lg text-neutral-500'>{product.description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident eveniet quia ratione dolorem numquam iste nostrum, a assumenda dicta inventore illum, recusandae reiciendis. Distinctio consequatur minus quam placeat, possimus reprehenderit quos odit neque aliquam ipsa fuga rerum accusamus? Iste veniam delectus excepturi ea aperiam rerum fugit incidunt ducimus totam veritatis!</p>
                 </div>
-                <div className="youmaylike w-1/4 p-4 h-auto bg-white rounded-md">
+                <div className="youmaylike w-full md:w-1/4 p-4 h-auto bg-white rounded-md">
                     <h1 className='font-bold text-xl'>You may also like</h1>
                     <div className="flex flex-col gap-2">
                         {/* populating to show random 4 products with there title, image and price */}

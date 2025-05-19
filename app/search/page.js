@@ -21,13 +21,13 @@ export default function Search({ searchParams }) {
         addToCart(product);
     };
     return (
-        <div className='mt-3 mx-20 rounded-md flex flex-col gap-3 p-4 h-auto'>
+        <div className='mt-3 md:mx-20 rounded-md flex flex-col gap-3 p-4 h-auto'>
             <h1>Searhed results for: {query}</h1>
             {filteredProducts.length === 0 ? (
                 <p>No products found..</p>
             ) : (
                 <div className="items">
-                    <div className="grid grid-cols-3 gap-4 mt-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
                         {filteredProducts.map((product) => (
                             <Link key={product.id} href={`/product/${product.id}`}>
                                 <div className="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition-shadow">

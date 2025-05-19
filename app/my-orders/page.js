@@ -54,19 +54,19 @@ const Orders = () => {
   }, [isLoaded, user]);
 
   if (!isLoaded) {
-    return <div className='mt-3 mx-20 p-4'>Loading...</div>;
+    return <div className='mt-3 md:mx-20 p-4'>Loading...</div>;
   }
 
   if (error) {
-    return <div className='mt-3 mx-20 p-4 text-red-500'>{error}</div>;
+    return <div className='mt-3 md:mx-20 p-4 text-red-500'>{error}</div>;
   }
 
   if (loading) {
-    return <div className='mt-3 mx-20 p-4'>Loading orders...</div>;
+    return <div className='mt-3 md:mx-20 p-4'>Loading orders...</div>;
   }
 
   return (
-    <div className='mt-3 mx-20 p-4'>
+    <div className='mt-3 md:mx-20 p-4'>
       <div className='bg-blue-500 text-white p-4 py-5 rounded-lg' >
         <h1 className='font-bold text-3xl'>Your Orders</h1>
       </div>

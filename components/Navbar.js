@@ -60,7 +60,7 @@ const Navbar = () => {
                     <Link href={"/my-orders"} >
                         <li className='md:flex hidden flex-col items-center justify-center text-[#8b96a5]'>
                             <Image src="/order.svg" alt="order" width={30} height={30} />
-                            Order
+                            Orders
                         </li>
                     </Link>
                     <Link href={"/mycart"} >
@@ -83,10 +83,16 @@ const Navbar = () => {
             {/* Mobile Bottom Navigation */}
             <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-50">
                 <div className="flex justify-around items-center h-16">
+                <Link href={"/"} className="flex-1">
+                        <div className="flex flex-col items-center justify-center text-[#8b96a5]">
+                            <Image src="/home.svg" alt="home" width={24} height={24} />
+                            <span className="text-xs mt-1">Home</span>
+                        </div>
+                    </Link>
                     <Link href={"/my-orders"} className="flex-1">
                         <div className="flex flex-col items-center justify-center text-[#8b96a5]">
                             <Image src="/order.svg" alt="order" width={24} height={24} />
-                            <span className="text-xs mt-1">Order</span>
+                            <span className="text-xs mt-1">Orders</span>
                         </div>
                     </Link>
                     <Link href={"/mycart"} className="flex-1">
@@ -102,12 +108,7 @@ const Navbar = () => {
                             <span className="text-xs mt-1">My Cart</span>
                         </div>
                     </Link>
-                    <Link href={"/"} className="flex-1">
-                        <div className="flex flex-col items-center justify-center text-[#8b96a5]">
-                            <Image src="/home.svg" alt="home" width={24} height={24} />
-                            <span className="text-xs mt-1">Home</span>
-                        </div>
-                    </Link>
+                    
                     <div>
                         <SignedOut>
                             <SignInButton>
