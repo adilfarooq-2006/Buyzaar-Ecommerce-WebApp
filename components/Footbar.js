@@ -4,13 +4,13 @@ import Link from 'next/link'
 
 const Footbar = () => {
     return (
-        <><footer className='p-7 bg-white flex justify-between px-20'>
+        <><footer className='md:p-7 p-2 bg-white flex justify-between md:px-20'>
             <div className="first">
                 <div className='logo text-2xl font-bold text-blue-500'>
                     Buyzaar
                 </div>
                 <div className="text">
-                    <p>Best ecommerce website with variety of products</p>
+                    <p >Best ecommerce website with variety of products</p>
                     <p className='mb-2'>Developed by Muhammad Adil Farooq</p>
                 </div>
                 <div className="social flex gap-2">
@@ -21,7 +21,7 @@ const Footbar = () => {
                 </div>
             </div>
             <div className="second">
-                <h1 className='font-bold text-lg'>About</h1>
+                <h1 className='hidden md:block font-bold text-lg'>About</h1>
                 <ul className='text-gray-500'>
                     <li className='hover:cursor-pointer hover:text-blue-500'>About Us</li>
                     <li className='hover:cursor-pointer hover:text-blue-500'>Find Store</li>
@@ -30,7 +30,7 @@ const Footbar = () => {
                 </ul>
 
             </div>
-            <div className="third">
+            <div className=" hidden md:block third">
                 <h1 className='font-bold text-lg'>Partnerships</h1>
                 <ul className='text-gray-500'>
                     <li className='hover:cursor-pointer hover:text-blue-500'>About Us</li>
@@ -40,8 +40,8 @@ const Footbar = () => {
                 </ul>
 
             </div>
-            <div className="fourth">
-                <h1 className='font-bold text-lg'>Information</h1>
+            <div className="hidden md:block fourth">
+                <h1 className=' font-bold text-lg'>Information</h1>
                 <ul className='text-gray-500'>
                     <li className='hover:cursor-pointer hover:text-blue-500'>Help Center</li>
                     <li className='hover:cursor-pointer hover:text-blue-500'>Money Refund</li>
@@ -49,7 +49,7 @@ const Footbar = () => {
                     <li className='hover:cursor-pointer hover:text-blue-500'>Contact Us</li>
                 </ul>
             </div>
-            <div className="fifth">
+            <div className="hidden md:block fifth">
                 <h1 className='font-bold text-lg'>For users</h1>
                 <ul className='text-gray-500'>
                     <li className='hover:cursor-pointer hover:text-blue-500'>Login</li>
@@ -59,7 +59,7 @@ const Footbar = () => {
                 </ul>
             </div>
         </footer>
-        <div className='p-7 bg-gray-200 flex justify-between px-20'>
+        <div className='p-7 bg-gray-200 flex justify-between md:px-20'>
             <div>
                 <p>© 2025 Buyzaar. All rights reserved.</p>
             </div>
