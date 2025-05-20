@@ -5,7 +5,7 @@ import { useUser } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const page = () => {
+const Page = () => {
     const { user, isLoaded } = useUser();
     const [orders, setorders] = useState([])
     const [completed, setcompleted] = useState(() => {
@@ -57,7 +57,7 @@ const page = () => {
             fetchOrders();
             router.push("/dashboard");
         }
-    }, [isLoaded, user]);
+    }, [isLoaded, user, router]);
 
     if (!isLoaded) return <p>Loading...</p>;
 
@@ -132,4 +132,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

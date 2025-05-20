@@ -6,7 +6,7 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
     const router = useRouter();
     const { cart, addToCart, buyNow } = useCart();
   
@@ -97,4 +97,4 @@ const page = ({ params }) => {
     )
 }
 
-export default page
+export default Page

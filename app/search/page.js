@@ -7,14 +7,14 @@ import Image from 'next/image'
 import { useCart } from '@/context/CartContext'
 
 export default function Search({ searchParams }) {
+    const { cart, addToCart } = useCart();
     const query = searchParams?.q || ''
     const filteredProducts = products.filter((product) =>
         product?.name?.toLowerCase().includes(query?.toLowerCase())
     )
     if (!query) return <p>Not found</p>
 
-    const { cart, addToCart } = useCart();
-
+    
     const handleAddToCart = (e, product) => {
         e.preventDefault();
         e.stopPropagation();

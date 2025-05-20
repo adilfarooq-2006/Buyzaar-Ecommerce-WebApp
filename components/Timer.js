@@ -1,30 +1,31 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 
 const Timer = () => {
-  const targetDate = new Date("2025-06-01T00:00:00"); // Set your desired target date
-  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
-
-  function getTimeLeft() {
+  const targetDate = useMemo(() => new Date("2025-06-01T00:00:00"), []);
+  const getTimeLeft = useCallback(() => {
     const total = targetDate.getTime() - new Date().getTime();
 
     const seconds = Math.floor((total / 1000) % 60);
     const minutes = Math.floor((total / 1000 / 60) % 60);
     const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
     const days = Math.floor(total / (1000 * 60 * 60 * 24));
-
+    
     return { days, hours, minutes, seconds };
-  }
+  }, [targetDate]);
+  
+  // Set your desired target date
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTimeLeft(getTimeLeft());
     }, 1000);
-
+  
     return () => clearInterval(interval);
-  }, []);
-
+  }, [getTimeLeft]);
+  
   return (
     <div className="grid grid-flow-col gap-2 text-center auto-cols-max">
       <CountdownItem value={timeLeft.days} label="Days" />

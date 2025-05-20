@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-const page = () => {
+const Page = () => {
   return (
     <div className='mt-3 mx-20 rounded-md flex justify-center items-center flex-col gap-3 p-4 h-auto'>
       <h1 className='text-6xl text-blue-500 text-center font-bold mt-10'>You are not authorized</h1>
@@ -13,4 +13,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

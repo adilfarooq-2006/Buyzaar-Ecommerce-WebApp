@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { useUser, useAuth } from '@clerk/nextjs'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 
 const Orders = () => {
   const { user, isLoaded } = useUser();
@@ -10,7 +10,7 @@ const Orders = () => {
   const [loading, setloading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchOrders = async () => {
+  const fetchOrders =useCallback(async () => {
     try {
       console.log("Starting to fetch orders...");
       const token = await getToken();
@@ -45,13 +45,13 @@ const Orders = () => {
     } finally {
       setloading(false);
     }
-  }
+  }, [getToken]);
 
   useEffect(() => {
     if (isLoaded && user) {
       fetchOrders();
     }
-  }, [isLoaded, user]);
+  }, [isLoaded, user, fetchOrders]);
 
   if (!isLoaded) {
     return <div className='mt-3 md:mx-20 p-4'>Loading...</div>;
