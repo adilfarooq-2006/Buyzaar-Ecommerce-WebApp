@@ -23,7 +23,8 @@ const Navbar = () => {
 
 
     return (
-        <>        <nav className='flex items-center justify-between p-4 md:px-20 bg-white'>
+        <>        
+        <nav className='flex items-center justify-between p-4 md:px-20 bg-white'>
             <Link href="/">
                 <div className='md:block hidden logo text-2xl font-bold text-blue-500'>
                     Buyzaar

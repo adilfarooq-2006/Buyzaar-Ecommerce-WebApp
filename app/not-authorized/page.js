@@ -14,3 +14,6 @@ const Page = () => {
 }
 
 export default Page
+export const metadata = {
+  title: "You are-not authorized - Buyzaar"
+}
