@@ -105,8 +105,8 @@ const Page = () => {
 
 
   return (
-    <div className='mt-3 mx-20 rounded-md flex p-4 h-auto'>
-      <div className="left rounded-md flex flex-col bg-white p-4 w-1/2">
+    <div className='mt-3 md:mx-20 rounded-md flex md:flex-row flex-col-reverse p-4 h-auto'>
+      <div className="left rounded-md flex flex-col bg-white p-4 md:w-1/2">
         <div className='logo text-7xl font-bold text-blue-500'>
           Buyzaar
         </div>
@@ -221,7 +221,7 @@ const Page = () => {
       </div>
 
 
-      <div className="right w-1/2 relative">
+      <div className="right md:w-1/2 relative">
         <div className='sticky top-5 p-4 rounded-md border-l border-neutral-400 bg-gray-200'>
           <div className='flex flex-col gap-4'>
             <div className="cart-items max-h-[50vh] overflow-y-auto pr-2">

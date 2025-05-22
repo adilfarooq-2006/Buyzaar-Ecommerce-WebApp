@@ -82,7 +82,7 @@ const Navbar = () => {
         </nav >
 
             {/* Mobile Bottom Navigation */}
-            <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-50">
+            <div className="fixed bottom-0 left-0 right-0 mx-8 bg-white border-t border-gray-200 md:hidden z-50">
                 <div className="flex justify-around items-center h-16">
                 <Link href={"/"} className="flex-1">
                         <div className="flex flex-col items-center justify-center text-[#8b96a5]">
@@ -113,7 +113,7 @@ const Navbar = () => {
                     <div>
                         <SignedOut>
                             <SignInButton>
-                                <button className='bg-blue-500 p-3 md:px-5 rounded-xl text-white font-medium text-md hover:bg-blue-600 hover:cursor-pointer'>SignIn</button>
+                                <button className='bg-blue-500 p-3 md:px-5 rounded-xl text-white font-medium text-md hover:bg-blue-600 hover:cursor-pointer'>Sign In</button>
                             </SignInButton>
                         </SignedOut>
                         <SignedIn>
